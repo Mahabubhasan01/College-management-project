@@ -27,3 +27,9 @@ def user_login(request):
     else:
         fm = AuthenticationForm()
     return render(request, 'login.html', {'form': fm})
+
+
+def student_form(request):
+    return render(request,'studentform.html')
+def home(request):
+    return render(request,'home.html')
