@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, SetPasswordForm, UserChangeForm, UserCreationForm
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from .models import studentForm
 # Create your views here.
 
 
@@ -30,6 +31,8 @@ def user_login(request):
 
 
 def student_form(request):
-    return render(request,'studentform.html')
+    students = studentForm.objects.all()
+    print(students)
+    return render(request,'studentform.html',{'students':students,'test':'test'})
 def home(request):
     return render(request,'home.html')
