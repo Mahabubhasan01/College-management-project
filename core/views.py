@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
-from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, SetPasswordForm, UserChangeForm, UserCreationForm
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-from .models import studentForm
+from .forms import StudentForm
 # Create your views here.
 
 
@@ -31,8 +31,10 @@ def user_login(request):
 
 
 def student_form(request):
-    students = studentForm.objects.all()
-    print(students)
-    return render(request,'studentform.html',{'students':students,'test':'test'})
+    forms = StudentForm()
+    context = {'forms':forms}
+    return render(request,'studentform.html',context)            
+
+
 def home(request):
-    return render(request,'home.html')
+    return render(request, 'home.html')

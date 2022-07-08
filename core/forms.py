@@ -1,7 +1,15 @@
-""" from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+
+from dataclasses import fields
+from django import forms
+
+
+from core.models import Student
 # Create your models here.
-class StudentForm(UserCreationForm):
+
+
+class StudentForm(forms.ModelForm):
     class Meta:
-        model = User
-        fields = ['first_name','last_name','email'] """
+        model = Student
+        fields = '__all__'
+        """ fields=['first_name']
+        widget = {'first_name':forms.TextInput(attrs={'class':'profileInputBox'})} """

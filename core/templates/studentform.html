@@ -1,5 +1,21 @@
-{% extends 'dashboard.html' %} {% block content %}
-<h1>This is student</h1>
-{{students}}
-{{test}}
+{% extends 'dashboard.html' %} {% load static %}{% load static tailwind_tags %}
+{% tailwind_css %}
+<link rel="stylesheet" href="{%static 'css/studentform.css'%}" />
+{% block content %}
+<div id="profile-edit-area">
+  <form>
+    {% csrf_token %}
+  <div id="edit-area-left">
+      <table>
+        <tbody >{% for fm in forms %}
+          <tr class='my-4 flex flex-wrap'>
+            <td class="edit-title text-2xl">{{fm.label_tag}}</td>
+            <td class="profileInputBox">{{fm}}</td>
+          </tr>{% endfor %}
+        </tbody>
+      </table>
+  </div>
+</form>
+</div>
 {% endblock content %}
+{% comment %} {{fm.errors|striptags}} {% endcomment %}

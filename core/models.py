@@ -1,6 +1,6 @@
 from django.db import models
 # Create your models here.
-class studentForm(models.Model):
+class Student(models.Model):
     father_choice = (("Teacher", "Teacher"), ("Professor", "Professor"),
                      ("Businessman", "Businessman"), ("Sciencist", "Sciencist"), ("Farmer", "Farmer"), ("NGO", "NGO"), ("Banker", "Banker"), ('Others', 'Others'),)
 
@@ -29,4 +29,4 @@ class studentForm(models.Model):
     religion = models.CharField(max_length=50, choices=religion_group)
     profile_img = models.ImageField(upload_to='assets/images')
     def __str__(self):
-        return self.first_name
+        return self.first_name+' '+self.last_name
